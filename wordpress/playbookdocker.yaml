@@ -1,0 +1,13 @@
+- hosts: all
+  tasks:
+    - name: 'Update'
+      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+    
+    - name: 'Instala pacotes do sistema operacional'
+      apt:
+        name: '{{ item }}'
+        state: latest
+      become: yes
+      with_items:
+        - docker.io
+        - docker
