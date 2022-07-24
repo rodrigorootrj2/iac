@@ -1,0 +1,4 @@
+FROM debian
+RUN apt-get update && apt-get install python3 curl telnet nmap -y && apt-get clean
+COPY dir/debian/app /opt
+WORKDIR /opt/

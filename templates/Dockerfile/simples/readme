@@ -1,0 +1,15 @@
+httpd:
+docker build -f Httpd -t web .
+docker run --rm -itd --name web -p 8080:80 web
+
+--configuração 
+- dir/httpd/public_html /usr/local/apache2/htdocs/
+--- /usr/local/apache2/conf/httpd.conf
+
+debian:
+docker build -f Debian -t deb .
+docker run --rm -itd --name deb deb
+
+---configuração
+-dir/httpd
+---
