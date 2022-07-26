@@ -13,3 +13,9 @@ docker run --rm -itd --name deb deb
 ---configuração
 -dir/httpd
 ---
+
+nginx:
+docker run --name web --rm -p 8080:80 -v /home/rcunha/Documentos/DevArea/Hub/iac/templates/Dockerfile/simples/dir/nginx/public_html/:/usr/share/nginx/html:ro -d nginx
+docker cp web:/etc/nginx/nginx.conf . 
+/usr/share/nginx/html
+/etc/nginx/nginx.conf
