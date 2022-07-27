@@ -1,0 +1,8 @@
+FROM python:3
+
+WORKDIR /opt
+COPY $PWD/dir/python /opt/
+RUN pip3 install --no-cache-dir -r requirements.txt
+#CMD [ "python", "./worker.py" ]
+#ENTRYPOINT [ "python", "worker.py" ]
+CMD [ "/bin/sh" ]

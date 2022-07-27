@@ -15,7 +15,14 @@ docker run --rm -itd --name deb deb
 ---
 
 nginx:
-docker run --name web --rm -p 8080:80 -v /home/rcunha/Documentos/DevArea/Hub/iac/templates/Dockerfile/simples/dir/nginx/public_html/:/usr/share/nginx/html:ro -d nginx
+docker run --name web --rm -p 8080:80 foo-web
 docker cp web:/etc/nginx/nginx.conf . 
+
 /usr/share/nginx/html
 /etc/nginx/nginx.conf
+
+python:
+docker build -f Python -t worker .
+
+ubuntu
+docker build -f Ubuntu -t ubuntu .
