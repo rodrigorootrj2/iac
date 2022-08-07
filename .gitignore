@@ -1,2 +1,5 @@
+#Ignorar Arquivos
+hosts
+inventario
 #Ignorar diretósio
-./worker
+/worker
