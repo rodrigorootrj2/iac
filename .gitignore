@@ -1,5 +1,6 @@
 #Ignorar Arquivos
 hosts
 inventario
+.hosts
 #Ignorar diretósio
 /worker
