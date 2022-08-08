@@ -1,6 +1,7 @@
 #Ignorar Arquivos
 hosts
 inventario
+envs
 .hosts
 #Ignorar diretósio
 /credenciais
