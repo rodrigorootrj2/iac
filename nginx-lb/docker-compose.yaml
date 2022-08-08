@@ -5,10 +5,18 @@ services:
     volumes:
     - ${PWD}/doc/html/:/usr/share/nginx/html
     - ${PWD}/doc/config/nginx.conf:/etc/nginx/nginx.conf
-    ports:
-    -  "8080-8082:80"
     networks:
       benet:
+  lb:
+    image: haproxytech/haproxy-alpine:latest
+    restart: always
+    volumes:
+    -  ${PWD}/doc/lb/:/usr/local/etc/haproxy:ro
+    ports:
+     - "80:80"
+    networks:
+      benet:
+      default:
 
 networks:
   benet:
