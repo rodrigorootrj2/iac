@@ -1,0 +1,12 @@
+Criar um wp com docker, em um db remoto.
+<h1>Variaveis de Ambiente.</h1>
+<pre>
+DB_PASS: ***
+DB_USR: ***
+DB_HOST: ***
+DB_NAME: ***
+</pre>
+Ansible:
+Infra Docker:
+Terraform:
+1 EC2, na AWS.

@@ -1,0 +1,17 @@
+version: '2'
+services:
+  lb:
+    image: haproxytech/haproxy-alpine:latest
+    restart: always
+    volumes:
+    -  ${PWD}/doc/lb/:/usr/local/etc/haproxy:ro
+    ports:
+     - "80:80"
+     - "8404:8404"
+    networks:
+      benet:
+      default:
+
+networks:
+  benet:
+    driver: bridge

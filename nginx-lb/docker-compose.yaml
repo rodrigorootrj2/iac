@@ -1,0 +1,15 @@
+version: '2'
+services:
+  web:
+    image: nginx:latest
+    volumes:
+    - ${PWD}/doc/html/:/usr/share/nginx/html
+    - ${PWD}/doc/config/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+    -  "8080-8082:80"
+    networks:
+      benet:
+
+networks:
+  benet:
+    driver: bridge
