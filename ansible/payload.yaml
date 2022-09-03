@@ -1,0 +1,22 @@
+- hosts: VBOX
+  tasks:
+    - name: Install a list of packages with a list variable
+      ansible.builtin.yum:
+        name: "{{ packages }}"
+      vars:
+        packages:
+        - httpd
+        - httpd-tools
+    - name: Add repository
+      ansible.builtin.yum_repository:
+        name: Docker
+        description: Yum Docker
+        baseurl: https://download.docker.com/linux/rhel/docker-ce.repo
+    # - name: Install a list of packages with a list variable
+    #   ansible.builtin.yum:
+    #     name: "{{ packages }}"
+    #   vars:
+    #     packages:
+    #     - docker
+
+#https://download.docker.com/linux/rhel/docker-ce.repo

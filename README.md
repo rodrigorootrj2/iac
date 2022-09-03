@@ -6,4 +6,4 @@ Projetos IAC, para Flow.
 Criar um wordpress, na AWS com terraform e ansible.
 Projetos>Wordpress>
 
-
+#ansible-playbook -i hosts  payload.yaml

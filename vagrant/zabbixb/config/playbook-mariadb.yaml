@@ -1,0 +1,9 @@
+- hosts: db
+  become: true
+  tasks:
+    - name: Update repositories cache
+      ansible.builtin.apt:
+        update_cache: no
+    - name: Install apache mariadb.
+      ansible.builtin.apt:
+        name: mariadb-server  

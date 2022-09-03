@@ -1,0 +1,21 @@
+#Sistema de DP
+#CREATE DATABASE app;
+USE app;
+
+CREATE TABLE Departamento (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    DeptoNome VARCHAR (10) NOT NULL,
+    Centrodecusto VARCHAR (10)
+);
+
+CREATE TABLE Funcionario (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	Nome VARCHAR(255) NOT NULL,
+    rg INT(7) NOT NULL,
+    cpf INT(11) NOT NULL,
+	Matricula VARCHAR(10) NOT NULL,
+	DataNasc DATE NOT NULL,
+	Endereco VARCHAR(255) NOT NULL,
+	Sexo CHAR(1) NOT NULL,
+	Salario INT(10) NOT NULL
+);

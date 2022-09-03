@@ -1,0 +1,18 @@
+- hosts: VBOX
+  tasks:
+    - name: Copiar var para o path /opt
+      ansible.builtin.copy:
+        src: scripts/script.sh
+        dest: /opt
+        owner: root
+        group: root
+        mode: '0644'
+      become: yes
+    - name: Copiar check.sh para o path /opt
+      ansible.builtin.copy:
+        src: scripts/script.sh
+        dest: /opt
+        owner: root
+        group: root
+        mode: '+x'
+      become: yes

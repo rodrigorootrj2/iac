@@ -1,0 +1,4 @@
+
+- ips: 205 - 207
+ansible-playbook  config/playbook-httpd.yaml -i config/hosts -u vagrant
+ansible-playbook  config/playbook-mariadb.yaml -i config/hosts -u vagrant

@@ -1,0 +1,9 @@
+- hosts: web
+  become: true
+  tasks:
+    - name: Update repositories cache
+      ansible.builtin.apt:
+        update_cache: no
+    - name: Install apache httpd.
+      ansible.builtin.apt:
+        name: apache2    
