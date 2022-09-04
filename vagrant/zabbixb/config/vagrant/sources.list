@@ -1,0 +1,7 @@
+#Repositórios do debian atualizados
+deb https://deb.debian.org/debian bullseye main
+deb-src https://deb.debian.org/debian bullseye main
+deb https://deb.debian.org/debian bullseye-updates main
+deb-src https://deb.debian.org/debian bullseye-updates main
+deb https://deb.debian.org/debian bullseye-backports main
+deb-src https://deb.debian.org/debian bullseye-backports main

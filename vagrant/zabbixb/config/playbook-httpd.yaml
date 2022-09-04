@@ -1,9 +1,27 @@
 - hosts: web
   become: true
   tasks:
+    # - name: Corrigindo repositórios depecrated do debian.
+    #   ansible.builtin.shell:
+    #     cmd: rm  /etc/apt/source.list
+
+    # - name: Inserindo um novo source.list
+    #   ansible.builtin.copy:
+    #     src: /Users/rodrigo.silva.cunha/Documents/WorkDir/OFF/iac/vagrant/zabbixb/config/vagrant/sources.list
+    #     dest: /etc/apt/
+    #     owner: root
+    #     group: root
+    #     mode: '0644'
+  
+  
     - name: Update repositories cache
       ansible.builtin.apt:
-        update_cache: no
+        update_cache: yes
+
     - name: Install apache httpd.
       ansible.builtin.apt:
-        name: apache2    
+        name: apache2
+
+    - name: Install apache python3.
+      ansible.builtin.apt:
+        name: python3

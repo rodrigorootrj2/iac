@@ -1,0 +1,4 @@
+- zabbixb: working
+    Criar ambiente, com 3 servidores para o zabbix.
+- db:
+    mariadb

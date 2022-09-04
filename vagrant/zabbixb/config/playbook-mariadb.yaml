@@ -1,9 +1,27 @@
 - hosts: db
   become: true
   tasks:
+    # - name: Corrigindo repositórios depecrated do debian.
+    #   ansible.builtin.shell:
+    #     cmd: rm  /etc/apt/source.list
+
+    # - name: Inserindo um novo source.list
+    #   ansible.builtin.copy:
+    #     src: /Users/rodrigo.silva.cunha/Documents/WorkDir/OFF/iac/vagrant/zabbixb/config/vagrant/sources.list
+    #     dest: /etc/apt/
+    #     owner: root
+    #     group: root
+    #     mode: '0644'
+
     - name: Update repositories cache
       ansible.builtin.apt:
-        update_cache: no
-    - name: Install apache mariadb.
+        update_cache: yes  
+
+    - name: Install mariadb-server.
       ansible.builtin.apt:
-        name: mariadb-server  
+        name: mariadb-server
+
+    - name: Install python3.
+      ansible.builtin.apt:
+        name: python3
+
