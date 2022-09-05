@@ -18,3 +18,26 @@ ansible-playbook  config/playbook-zabbix.yaml -i config/hosts -u vagrant
 - zabbix-apache-conf
 - zabbix-sql-scripts
 - zabbix-agent
+
+
+##########
+mysql -uroot -p
+password
+mysql> create database zabbix character set utf8mb4 collate utf8mb4_bin;
+mysql> create user zabbix@localhost identified by 'password';
+mysql> grant all privileges on zabbix.* to zabbix@localhost;
+mysql> quit;
+############
+mysql -uroot -p
+password
+mysql> create database zabbix character set utf8mb4 collate utf8mb4_bin;
+mysql> create user zabbix@'%' identified by 'password';
+mysql> grant all privileges on zabbix.* to zabbix@'%';
+mysql> quit;
+
+vagrant@ubuntu-bionic:~$ zcat server.sql.gz | mysql --default-character-set=utf8mb4 -uzabbix -p zabbix
+Enter password: 
+ERROR 1071 (42000) at line 8: Specified key was too long; max key length is 767 bytes
+
+character set utf8 collate utf8_bin
+create database zabbix character set utf8 collate utf8_bin;
