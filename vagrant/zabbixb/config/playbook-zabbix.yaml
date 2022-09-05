@@ -41,8 +41,4 @@
         - zabbix-apache-conf
         - zabbix-sql-scripts
         - zabbix-agent
-
-    - name: Install zabbix
-      ansible.builtin.apt:
-        name: zabbix-server-mysql
         
