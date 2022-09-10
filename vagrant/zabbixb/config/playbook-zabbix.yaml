@@ -40,5 +40,4 @@
         - zabbix-frontend-php
         - zabbix-apache-conf
         - zabbix-sql-scripts
-        - zabbix-agent
-        
+        - zabbix-agent   

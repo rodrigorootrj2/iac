@@ -1,0 +1,12 @@
+# 2022/05
+- hosts: web
+  become: true
+  tasks:   
+    - name: Update repositories cache
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Install a list of packages, to zabbix.
+      ansible.builtin.apt:
+        pkg:
+        - nginx
