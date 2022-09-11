@@ -7,3 +7,5 @@ envs
 /credenciais
 /foo
 /cred
+#Ignorar em Subdiretórios
+*/hiden
