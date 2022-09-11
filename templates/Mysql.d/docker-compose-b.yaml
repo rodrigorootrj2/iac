@@ -11,6 +11,6 @@ services:
     ports:
       - 3306:3306
     volumes:
-      -  ./db:/var/lib/mysql/
+      -  ./hiden/db:/var/lib/mysql/
       -  ./conf:/etc/mysql/conf.d/
       - ./workdir:/opt/

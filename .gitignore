@@ -3,6 +3,7 @@ hosts
 inventario
 envs
 .hosts
+*hiden
 #Ignorar diretósio
 /credenciais
 /foo
