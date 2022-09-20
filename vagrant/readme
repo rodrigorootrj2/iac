@@ -11,6 +11,10 @@
 - zabbix: working
     Criar um zabbix, stand alone.
     inventário: 192.168.1.208/24
+- so
+    - ubuntu 18 lts
+    192.168.1.210/24
+
 Mini Man:
 vagrant init ubuntu/bionic64
 vagrant init ubuntu/bionic64 --box-version 20220901.0.0
