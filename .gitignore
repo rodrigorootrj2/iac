@@ -10,3 +10,5 @@ envs
 /cred
 #Ignorar em Subdiretórios
 */hiden
+hiden/
+db/
