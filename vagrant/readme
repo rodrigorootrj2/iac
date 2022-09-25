@@ -1,4 +1,5 @@
 - zabbixb: working
+    [205,206,207]
     Criar ambiente, com 3 servidores para o zabbix.
     - inventário:
         ips: 192.168.1.205-207/24
@@ -9,11 +10,11 @@
     - zabbix:
         zabbix-server
 - zabbix: working
+    [209]
     Criar um zabbix, stand alone.
-    inventário: 192.168.1.208/24
+    inventário: 192.168.1.209/24
 - so
-    - ubuntu 18 lts
-    192.168.1.210/24
+    [210,213,212]
 
 Mini Man:
 vagrant init ubuntu/bionic64
@@ -24,3 +25,18 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/bionic64"
   config.vm.box_version = "20220901.0.0"
 end
+
+Vagrant Box:
+Criar um vagrant box, na sua conta da vagrant cloud.
+Fazer a instalação do seu S/O
+Usar o comando abaixo, para criar um package.box
+$sudo vagrant package --base Ubuntu18
+$sudo vagrant box add --name ubuntu18.04.6 $HOME/Documents/Vagrant/package.box
+$vagrant init ubuntu18.04.6
+$vagrant up
+$sudo vagrant box remove ubuntu18.04.6 
+Fazer o upload do vagrantbox no provider criado.
+
+Problema Conhecido:
+ubuntu-bionic
+No ubuntu-bionic, via nat, a conexão com os repositórios não funciona. Contornando, coloquei o ip bridge como default e funcionou.

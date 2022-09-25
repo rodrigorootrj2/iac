@@ -12,3 +12,9 @@ envs
 */hiden
 hiden/
 db/
+credencials/
+credenciais/
+venv/
+.venv/
+.nginx/venv/
+.nginx.venv/

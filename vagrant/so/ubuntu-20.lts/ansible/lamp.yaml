@@ -23,3 +23,16 @@
           - apache2
           - mariadb-server
           - python3
+          - php
+          - libapache2-mod-php
+          - php-mysql
+          - unzip
+    - name: Dependencias para Glpi
+      ansible.builtin.apt:
+        pkg:
+          - php8.1-curl
+          - php8.1-gd
+          - php8.1-intl
+          - php8.1-xml
+          - php8.1-common
+          - php-xml
