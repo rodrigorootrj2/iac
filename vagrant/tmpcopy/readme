@@ -1,0 +1,7 @@
+Para instalar o mediawiki, no docker usei o debian.
+Docker:
+Criei um container para mediawiki, conectando o banco de dados local. Abaixo o container em produção.
+    src/mediawiki-1.38-docker.tgz
+    mkdir /opt/docker.d/mediawiki && cd /opt/docker.d/mediawiki
+    docker build . -t webi:1
+    docker run --rm -itd --name web -p9090:80 webi:1
