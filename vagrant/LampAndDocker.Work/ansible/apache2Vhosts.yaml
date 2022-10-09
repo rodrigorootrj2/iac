@@ -1,0 +1,47 @@
+- hosts: main
+  become: true
+  tasks:
+
+    - name: Copy, setup Vhosts to apache2.
+      ansible.builtin.copy:
+        src: "{{ item }}"
+        dest: /etc/apache2/sites-available/
+        owner: root
+        group: root
+        mode: '0644'
+      with_fileglob:
+        - conf/apache2/sites-available/*
+
+
+    - name: Copy, setup ports to apache2.
+      ansible.builtin.copy:
+        src: conf/apache2/ports.conf
+        dest: /etc/apache2/
+        owner: root
+        group: root
+        mode: '0644'
+
+
+
+    - name: Enable Vhosts in apache2 Stage 1
+      ansible.builtin.shell: mkdir wordpress glpi info phpbb 
+      args:
+        chdir: /var/www/
+
+    - name: Enable Vhosts in apache2 Stage 1.2 
+      ansible.builtin.file:
+        path: /var/www/
+        state: directory
+        recurse: yes
+        owner: www-data
+        group: www-data
+        mode: '0755'    
+
+
+    - name: Enable Vhosts in apache2 Stage 2
+      become: true
+      ansible.builtin.raw: cd /etc/apache2/ && a2ensite wordpress.conf glpi.conf info.conf phpbb.conf
+
+    - name: Restart apache2
+      become: true
+      ansible.builtin.raw: systemctl restart apache2

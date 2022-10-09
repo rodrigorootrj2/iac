@@ -1,0 +1,34 @@
+- hosts: main
+  become: yes
+  tasks:
+    - name: Hostname.
+      ansible.builtin.shell:
+        cmd: echo "LDAP" >/etc/hostname && hostname LDAP
+
+    - name: Copy, apache config files.
+      ansible.builtin.copy:
+        src: conf/default.source.list
+        dest: /etc/apt/source.list
+        owner: root
+        group: root
+        mode: '0644'
+  
+    - name: Update repositories cache
+      ansible.builtin.apt:
+        update_cache_retries: 
+   
+
+    - name: Samba - Install packages, Samba.
+      ansible.builtin.apt:
+        pkg:
+          - samba
+          - smbldap-tools
+          - net-tools
+        state: present
+
+    - name: Samba - Install packages, LDAP.
+      ansible.builtin.apt:
+        name: 
+          - ldap-utils
+          - slapd
+        state: present

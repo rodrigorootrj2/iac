@@ -22,7 +22,7 @@
           - glpi
           - phpbb
         state: present
-    - name: Create user with password, all database privileges and 'WITH GRANT OPTION' in wiki,wordpress,phpbb,glpi
+    - name: Create user with password, all database privileges and 'WITH GRANT OPTION' in wiki,wordpress,phpbb,glpi LOCAL
       community.mysql.mysql_user:
         state: present
         name: user
@@ -36,6 +36,20 @@
           'phpbb.*': 'ALL,GRANT'
           'glpi.*': 'ALL,GRANT'    
     
+    - name: Create user with password, all database privileges and 'WITH GRANT OPTION' in wiki,wordpress,phpbb,glpi REMOTE
+      community.mysql.mysql_user:
+        state: present
+        name: remoteuser
+        password: 123qwe
+        host: '%'
+        host_all: no
+        host: "%"
+        priv:
+          'wiki.*': 'ALL,GRANT'
+          'wordpress.*': 'ALL,GRANT'
+          'phpbb.*': 'ALL,GRANT'
+          'glpi.*': 'ALL,GRANT' 
+
     - name: Bootstrap a host without python2 installed
       become: true
       ansible.builtin.raw: systemctl restart mariadb 

@@ -7,18 +7,21 @@
 # you're doing.
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/focal64"
-  # config.vm.box_version = "20220920.0.0"
   
   config.vm.define "core" do |core|    
-    core.vm.network "public_network", ip: "192.168.1.212", bridge: "en0: Wi-Fi (Wireless)"
+    core.vm.network "public_network", ip: "192.168.1.218", bridge: "en0: Wi-Fi (Wireless)"
     config.ssh.dsa_authentication
     config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/me.pub"    
     config.vm.provision "shell", inline: <<-SHELL
       cat /home/vagrant/.ssh/me.pub >> /home/vagrant/.ssh/authorized_keys
     SHELL
-    config.vm.provision "file", source: "config/network/50-local-custom.yaml", destination: "/etc/netplan"
+    config.vm.provision "file", source: "config/network/50-local-custom.yaml", destination: "~/"
     config.vm.provision "shell", inline: <<-SHELL
-      netplan apply
+        sudo cp /home/vagrant/50-local-custom.yaml /etc/netplan
+        netplan apply
+    SHELL
+    config.vm.provision "shell", inline: <<-SHELL
+      sudo apt-get update
     SHELL
   end
 end

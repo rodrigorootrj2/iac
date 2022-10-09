@@ -1,15 +1,13 @@
 - hosts: main
   become: true
   tasks:
-    # - name: Corrigindo repositórios depecrated do debian.
-    #   ansible.builtin.shell:
-    #     cmd: rm  /etc/apt/source.list
+
     - name: pwds
       shell: pwd
       register: playbook_path_output
     - debug: var=playbook_path_output.stdout
 
-    - name: Copy, apache config files.
+    - name: Copy, default repositoryes config files.
       ansible.builtin.copy:
         src: conf/default.source.list
         dest: /etc/apt/source.list

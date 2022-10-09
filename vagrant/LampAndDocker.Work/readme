@@ -1,0 +1,20 @@
+Inventário
+Lamp com ubuntu 18.
+    inventario: phpbb, wordpress, glpi
+Para instalar o mediawiki, no docker usei o debian.
+    inventário: mediawiki
+Docker:
+Criei um container para mediawiki, conectando o banco de dados local. Abaixo o container em produção.
+    src/mediawiki-1.38-docker.tgz
+    mkdir /opt/docker.d/mediawiki && cd /opt/docker.d/mediawiki
+    docker build . -t webi:1
+    docker run --rm -itd --name web -p9090:80 webi:1
+Deploy:
+Instalando o lamp:  phpbb, wordpress, glpi, mediawiki
+cd ansible 
+ansible-playbook -i hosts lamp.yaml -u vagrant
+Instalando a base de dados:
+ansible-playbook -i hosts db.yaml -u vagrant
+Setup do apache2:
+ansible-playbook -i hosts apache2Vhosts.yaml -u vagrant
+Insto posto, fazer a parte do Deploy:
