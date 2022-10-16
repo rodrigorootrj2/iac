@@ -15,6 +15,28 @@
     inventário: 192.168.1.209/24
 - so
     [210,213,212]
+- runner
+    [219]
+- docker
+    [208]?
+LampAndDocker.Work
+    [217]
+Ldap
+    [218]
+nginx
+    [211]    
+nginxdb
+    [214]
+Tmp
+    [220]
+Vpn
+    [215]
+FW
+    [216,221]
+LPI-Labs
+    [222,223,224]
+ElsticStack
+    [225,226,227]
 
 Mini Man:
 vagrant init ubuntu/bionic64
@@ -27,16 +49,25 @@ Vagrant.configure("2") do |config|
 end
 
 Vagrant Box:
+Redhat9,Debian11,Ubuntu18
+É necessario inserir as credenciais.
 Criar um vagrant box, na sua conta da vagrant cloud.
 Fazer a instalação do seu S/O
 Usar o comando abaixo, para criar um package.box
-$sudo vagrant package --base Ubuntu18
-$sudo vagrant box add --name ubuntu18.04.6 $HOME/Documents/Vagrant/package.box
+$vagrant package --base Ubuntu18 --output ubuntu18.box
+$vagrant package --base Debian11 --output debian11.box
+$vagrant box add --name debian11 debian11.box
 $vagrant init ubuntu18.04.6
 $vagrant up
-$sudo vagrant box remove ubuntu18.04.6 
+$vagrant box remove ubuntu18.04.6
+$vagrant box remove debian11
 Fazer o upload do vagrantbox no provider criado.
 
 Problema Conhecido:
 ubuntu-bionic
 No ubuntu-bionic, via nat, a conexão com os repositórios não funciona. Contornando, coloquei o ip bridge como default e funcionou.
+Instalando terraform:
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+sudo apt update
+sudo apt install terraform

@@ -1,0 +1,34 @@
+- hosts: main
+  become: true
+  tasks:
+    # - name: Corrigindo repositórios depecrated do debian.
+    #   ansible.builtin.shell:
+    #     cmd: rm  /etc/apt/source.list
+    - name: Copy, source list to /etc/apt/ config files.
+      ansible.builtin.copy:
+        src: conf/default.source.list
+        dest: /etc/apt/source.list
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Copy, script local to remote host.
+      ansible.builtin.copy:
+        src: conf/script/terraform.sh
+        dest: /home/vagrant
+        owner: root
+        group: root
+        mode: '0774'
+
+    - name: Executar script terraform.sh
+      ansible.builtin.shell: bash terraform.sh
+  
+    - name: Update repositories cache
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Dependencias para Docker, via composer.
+      ansible.builtin.apt:
+        pkg:
+          - docker.io
+

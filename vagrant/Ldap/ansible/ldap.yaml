@@ -5,7 +5,7 @@
       ansible.builtin.shell:
         cmd: echo "LDAP" >/etc/hostname && hostname LDAP
 
-    - name: Copy, apache config files.
+    - name: Copy,source list.
       ansible.builtin.copy:
         src: conf/default.source.list
         dest: /etc/apt/source.list
@@ -13,7 +13,7 @@
         group: root
         mode: '0644'
   
-    - name: Update repositories cache
+    - name: Update repositories cache.
       ansible.builtin.apt:
         update_cache_retries: 
    
